@@ -5,7 +5,7 @@ export default class CustomDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <meta property="custom" content="Hello" />
+                    <meta property="custom" content="E-commerce cart" />
                 </Head>
                 <body>
                     <Main />

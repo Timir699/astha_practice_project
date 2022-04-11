@@ -1,14 +1,28 @@
+import { GetStaticProps } from 'next';
 import React from 'react';
 
-const ProductList = () => {
+export const getStaticProps: GetStaticProps = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await res.json()
+    console.log(data);
+
+    return { 
+        props: { products: data }
+    }
+}
+
+
+const ProductList = ({products}: any) => {
+    
+    console.log(products);
+    
     return (
-        <div className="container">
+        <div className="text-zinc-400 text-5xl">
             Product List
+
+
         <style jsx>{`
-            .container {
-                width: 80%;
-                margin: 0 auto;
-            }
+           
         `}
 
         </style>
@@ -17,3 +31,4 @@ const ProductList = () => {
 };
 
 export default ProductList;
+

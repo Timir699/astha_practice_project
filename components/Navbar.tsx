@@ -7,7 +7,6 @@ const Navbar = () => {
     return (
         <div className="navbar-main">
             <div className="container">
-            
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer'}}>
                     <Link href="/" passHref>
                         <Image 
@@ -16,7 +15,13 @@ const Navbar = () => {
                             width={70}
                             height={50}
                         />
-                    </Link>                    
+                    </Link>    
+                    <Link href="/myOrders">
+                        <a>MyOrders</a>
+                    </Link> 
+                    {/* <Link href="/" passHref>
+                        
+                    </Link>    */}
                     <Link href="/cart">
                         <a><BsCart style={{ fontSize: '2rem', cursor: 'pointer' }} /></a>
                     </Link>

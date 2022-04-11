@@ -1,4 +1,7 @@
-/** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
