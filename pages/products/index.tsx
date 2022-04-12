@@ -5,7 +5,6 @@ import ProductList from '../../components/product/ProductList';
 import { Products } from '../../model/product';
 
 export const getStaticProps: GetStaticProps = async () => {
-
     const res = await fetch('http://localhost:3000/api/products');
     const data = await res.json()
    
