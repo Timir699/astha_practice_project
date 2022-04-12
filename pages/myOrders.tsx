@@ -1,8 +1,9 @@
+import { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import MyOrders from '../components/MyOrders';
 
-const myOrders = () => {
+const myOrders: NextPage = () => {
   return (
     <div>
       <Head>

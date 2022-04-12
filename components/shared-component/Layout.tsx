@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Footer from '../shared-component/Footer';
+import Navbar from '../shared-component/Navbar';
 
 const Layout = ({ children }: any) => {
   return (
@@ -12,6 +12,7 @@ const Layout = ({ children }: any) => {
             .container {
                 width: 80%;
                 margin: 0 auto;
+                min-height: 89vh;
             }
         `}
 

@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className="navbar-main">
             <div className="container">
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer'}}>
-                    <Link href="/" passHref>
+                    <Link href="/products" passHref>
                         <Image 
                             src="/images.jpg"
                             alt="company logo"

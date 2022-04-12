@@ -1,15 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-interface Product {
-  name : string;
-  img : string;
-  weight: number;
-  id: number;
-  price: number;
-  description : string;
-}
-
 export default function products(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -17,7 +8,7 @@ export default function products(
   res.status(200).json([
     {
       name: "Syringe",
-      img: "https://ec.europa.eu/jrc/sites/default/files/styles/normal-responsive/public/canton_-_stock.adobe_.com_syringe_adobestock_210850039.jpeg?itok=52sGbdoO",
+      img: "https://5.imimg.com/data5/SELLER/Default/2021/6/MQ/SY/TI/21284661/syringe-with-needle-2ml-22g-23g-24g-500x500.jpg",
       weight: 500,
       id: 1,
       price: 23,
