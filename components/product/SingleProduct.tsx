@@ -6,13 +6,12 @@ import Modal from '../modal/Modal';
 
 const SingleProduct = ({ product }: { product: Product }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-
   
   //
   return (
     <div>
       <div className="border text-center mx-10" key={product.id}>
-        <Link href={`/products/${product.id}`}>
+        <Link href={`/products/${product.id}` } passHref >
           <div>
             <Image src={product.img} alt="image" width={300} height={300} />
             <h2 className="text-2xl">Name : {product.name}</h2>
@@ -37,7 +36,7 @@ const SingleProduct = ({ product }: { product: Product }) => {
             <h2 className="text-xl">Product Weight : {product.weight}</h2>
           </div>
         </Modal>
-        <Link href={`/products/${product.id}`}>
+        <Link href={`/products/${product.id}`} passHref >
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-6 ml-2 ">
             Product Details
           </button>

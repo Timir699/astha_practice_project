@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((product: { id: { toString: () => Product } }) => {
     console.log(product);
     return {
-      params: { id: product.id.toString() },
+      params: { id: product.id },
     };
   });
   return {
@@ -30,13 +30,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-
+// Array.isArray(router.query.id)?router.query.id[0]:router.query.id
+// parseInt(detailsId||''
 const ProductDetails = ({ products }: Products) => {
   const router = useRouter();
-  const detailsId = Array.isArray(router.query.id)?router.query.id[0]:router.query.id ;
-  console.log(detailsId);
-  const detailsData = products.find(product => product.id == parseInt(detailsId||''));
-
+  const detailsId = router.query.id;
+  const detailsData = products.find(product => {
+    return product.id === detailsId
+  }  );
+  
   return (
     <div>
       <Head>
@@ -45,13 +47,13 @@ const ProductDetails = ({ products }: Products) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="text-center mt-12">
-        <Image src={detailsData?.img} alt="image" width={300} height={300} />
+        <Image src={detailsData?.img!} alt="image" width={300} height={300} />
         <p className="text-3xl">Details of {detailsData?.name}</p>
         <p className="text-3xl">Price : ${detailsData?.price}</p>
         <p className="text-xl mx-72">
           Description : {detailsData?.description}
         </p>
-        <p className="text-2xl">Product Available : 10</p>
+        <p className="text-2xl">Product Available : {detailsData?.quantity}</p>
         <div className="flex justify-center mt-2">
           <button className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
             <BsFillCartPlusFill />
