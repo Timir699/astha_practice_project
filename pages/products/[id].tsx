@@ -33,8 +33,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const ProductDetails = ({ products }: Products) => {
   const router = useRouter();
-  const detailsId = router.query.id;
-  const detailsData = products.find((product) => product.id == detailsId);
+  const detailsId = Array.isArray(router.query.id)?router.query.id[0]:router.query.id ;
+  console.log(detailsId);
+  const detailsData = products.find(product => product.id == parseInt(detailsId||''));
 
   return (
     <div>

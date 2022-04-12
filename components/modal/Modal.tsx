@@ -28,7 +28,7 @@ const Modal = ({ show, onClose, children, title } : Props) => {
               x
             </a>
           </StyledModalHeader>
-          {title && <h1 className="text-2xl">{title}</h1>}
+          {title && <h1 className="text-2xl text-center">{title}</h1>}
           <StyledModalBody className="text-2xl">{children}</StyledModalBody>
         </StyledModal>
       </StyledModalOverlay>

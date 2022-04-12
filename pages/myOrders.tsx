@@ -12,7 +12,6 @@ const myOrders: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MyOrders />
-      
     </div>
   );
 };

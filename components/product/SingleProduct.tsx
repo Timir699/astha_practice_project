@@ -27,6 +27,7 @@ const SingleProduct = ({ product }: { product: Product }) => {
         </button>
         <Modal onClose={() => setShowModal(false)} 
         show={showModal}
+        title={'Quick View'}
         >
           <div className="text-center">
           <Image src={product.img} alt="image" width={150} height={150} />
