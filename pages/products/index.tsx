@@ -12,7 +12,6 @@ export const getStaticProps: GetStaticProps = async () => {
         props: { products: data }
     }
 }
-
 const productList = ({products}: Products) => {
     return (
         <div>

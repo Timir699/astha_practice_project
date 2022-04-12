@@ -19,7 +19,7 @@ export default function products(
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus5ykq95C3d1JIQyyn5xz3lTd_6m6WMZPWaoFppg_2TNi4cgupPOQsi-lgyfmGIO0lxs&usqp=CAU",
       weight: 70,
       id: 2,
-      price: 13,
+      price: 2,
       description: "specifically : one consisting of a sensor housed in a metal probe that registers a change in electrical resistance as a change in temperature"
     },
     {
@@ -43,7 +43,7 @@ export default function products(
       img: "https://images.othoba.com/images/thumbs/0303869_jumper-fingertip-pulse-oximeter-jpd-500b.jpeg",
       weight: 500,
       id: 5,
-      price: 2,
+      price: 13,
       description: "Pulse oximetry is a test used to measure the oxygen level (oxygen saturation) of the blood. It is an easy, painless measure of how well oxygen is being sent to parts of your body furthest from your heart, such as the arms and legs. ... This information helps the healthcare provider decide if a person needs extra oxygen."
     },
     {

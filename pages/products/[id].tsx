@@ -46,14 +46,16 @@ const ProductDetails = ({ products }: Products) => {
       <div className="text-center mt-12">
         <Image src={detailsData?.img} alt="image" width={300} height={300} />
         <p className="text-3xl">Details of {detailsData?.name}</p>
-        <p className="text-3xl">Price : {detailsData?.price}</p>
-        <p className="text-2xl">Description : {detailsData?.description}</p>
-        <p className="text-3xl">Product Available : 10</p>
-        <div className="flex justify-center"> 
-        <button className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
-        <BsFillCartPlusFill />
-          <p className='ml-2'>Add to cart</p>
-        </button>
+        <p className="text-3xl">Price : ${detailsData?.price}</p>
+        <p className="text-xl mx-72">
+          Description : {detailsData?.description}
+        </p>
+        <p className="text-2xl">Product Available : 10</p>
+        <div className="flex justify-center mt-2">
+          <button className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
+            <BsFillCartPlusFill />
+            <p className="ml-2">Add to cart</p>
+          </button>
         </div>
       </div>
     </div>
