@@ -34,7 +34,7 @@ const Navbar = () => {
                         
                     </Link>    */}
           <div className="cart-link">
-            <Link href="/cart">
+            <Link href="/cart" passHref >
               <div>
                 <a>
                   <BsCart style={{ fontSize: '2rem', cursor: 'pointer' }} />

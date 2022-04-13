@@ -6,18 +6,8 @@ import Image from 'next/image';
 
 const Cart = () => {
   const cartProduct = useStore((state) => state.cartProduct);
-  const addCartProduct = useStore((state) => state.addCartProduct);
   const removeProduct = useStore((state) => state.removeProduct);
 
-
-  // const removeItem = (product) => {
-  //   const finalCartItems = cartProduct.filter(
-  //     (finalCartItem) => finalCartItem.id != product.id
-  //   );
-  //   // addCartProduct(finalCartItems);
-  //   return finalCartItems
-  // };
-  
 
   const quantity = cartProduct.length
 
