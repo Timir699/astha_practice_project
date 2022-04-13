@@ -35,12 +35,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // Array.isArray(router.query.id)?router.query.id[0]:router.query.id
 // parseInt(detailsId||''
 const ProductDetails = ({ products }: Products) => {
-   const [isAdd, setIsAdd] = useState(false)
-
-  const addToCart = () => {
-    setIsAdd(true)
-  }
-
   const router = useRouter();
   const detailsId = router.query.id;
   const detailsData = products.find(product => {
@@ -48,6 +42,16 @@ const ProductDetails = ({ products }: Products) => {
   } );
 
   const addCartProduct = useStore(state=>state.addCartProduct);
+  const [isAdd, setIsAdd] = useState(false)
+
+  const addToCart = () => {
+    setIsAdd(true)
+  }
+  const gotoCheckout = () => {
+    router.push('/cart')
+  }
+
+ 
   
   return (
     <div>
@@ -66,11 +70,11 @@ const ProductDetails = ({ products }: Products) => {
         <p  >Product Available : {detailsData?.quantity}</p>
         <div className="flex justify-center mt-2">
           <button onClick={() => { addToCart()
-              isAdd ? addToCart() : addCartProduct(detailsData!)
+              isAdd ? gotoCheckout() : addCartProduct(detailsData!)
             
             } } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
             <BsFillCartPlusFill />
-            <p className="ml-2">{ isAdd ? 'Go to Checkout' : 'Add to cart'}</p>
+            <p className="ml-2">{ isAdd ? 'Go to cart' : 'Add to cart'}</p>
           </button>
         </div>
       </div>

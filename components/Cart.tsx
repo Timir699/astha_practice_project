@@ -3,18 +3,23 @@ import { useStore } from '../store/cartStore';
 import { IoBagCheckOutline } from 'react-icons/io5';
 import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
 import Image from 'next/image';
+import { useRouter } from 'next/router'
 
 const Cart = () => {
   const cartProduct = useStore((state) => state.cartProduct);
   const removeProduct = useStore((state) => state.removeProduct);
-
-
   const quantity = cartProduct.length
 
   const total = cartProduct.map((cartProductPrice) => {
     const { price } = cartProductPrice;
     return price;
   });
+
+  const router = useRouter()
+
+  const gotoCheckout = () => {
+    router.push('/checkout')
+  } 
 
   let totalPrice = total.reduce( (a, b) => a + b, 0 );
   console.log(totalPrice);
@@ -35,7 +40,7 @@ const Cart = () => {
                 <div className="flex justify-center mt-2">
             <button onClick={() => removeProduct(product.id) } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
               <MdOutlineRemoveShoppingCart />
-              <p className="ml-2">Remove from cart</p>
+              <p  className="ml-2">Remove from cart</p>
             </button>
           </div>
               </div>
@@ -52,7 +57,7 @@ const Cart = () => {
           <p className="text-xl my-4">Grand Total : ${totalPrice} </p>
          
           <div className="flex justify-start mt-2">
-            <button className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
+            <button onClick={() => gotoCheckout() } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
               <IoBagCheckOutline />
               <p className="ml-2">Checkout</p>
             </button>
