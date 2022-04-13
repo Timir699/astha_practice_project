@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/cartStore';
 import { IoBagCheckOutline } from 'react-icons/io5';
 import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
@@ -6,7 +6,13 @@ import Image from 'next/image';
 
 const Cart = () => {
   const cartProduct = useStore((state) => state.cartProduct);
+  const addAllCartProduct = useStore((state) => state.addAllCartProduct);
+
   const [allCartProduct, setAllCartProduct] = useState(cartProduct)
+
+  useEffect(() => {
+    addAllCartProduct(allCartProduct)
+  }, [allCartProduct])
 
   console.log(allCartProduct);
 

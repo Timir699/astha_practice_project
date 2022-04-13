@@ -14,5 +14,7 @@ export interface Products {
 
 export interface CartProduct {
  cartProduct: Product[];
+ myOrderProduct?: Product[];
  addCartProduct : (detailsData : Product) => void
+ addAllCartProduct : (detailsData : Product[]) => void
 }

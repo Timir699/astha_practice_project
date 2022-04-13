@@ -7,6 +7,7 @@ import { useStore } from '../../store/cartStore';
 const Navbar = () => {
   const cartProduct  = useStore(state=>state.cartProduct);
   const cartCounter = cartProduct.length
+  console.log(cartCounter);
   return (
     <div className="navbar-main">
       <div className="container">
