@@ -6,27 +6,22 @@ import Image from 'next/image';
 
 const Cart = () => {
   const cartProduct = useStore((state) => state.cartProduct);
-  const addAllCartProduct = useStore((state) => state.addAllCartProduct);
+  const addCartProduct = useStore((state) => state.addCartProduct);
+  const removeProduct = useStore((state) => state.removeProduct);
 
-  const [allCartProduct, setAllCartProduct] = useState(cartProduct)
 
-  useEffect(() => {
-    addAllCartProduct(allCartProduct)
-  }, [allCartProduct])
-
-  console.log(allCartProduct);
-
-  const removeItem = (product) => {
-    const finalCartItems = allCartProduct.filter(
-      (finalCartItem) => finalCartItem.id !== product.id
-    );
-    setAllCartProduct(finalCartItems);
-  };
+  // const removeItem = (product) => {
+  //   const finalCartItems = cartProduct.filter(
+  //     (finalCartItem) => finalCartItem.id != product.id
+  //   );
+  //   // addCartProduct(finalCartItems);
+  //   return finalCartItems
+  // };
   
 
-  const quantity = allCartProduct.length
+  const quantity = cartProduct.length
 
-  const total = allCartProduct.map((cartProductPrice) => {
+  const total = cartProduct.map((cartProductPrice) => {
     const { price } = cartProductPrice;
     return price;
   });
@@ -41,14 +36,14 @@ const Cart = () => {
           <p className="text-3xl my-4">Cart</p>
 
           <div className="grid grid-cols-4 gap-4">
-          {allCartProduct.map((product) => {
+          {cartProduct.map((product) => {
             return (
               <div className="border text-center p-4" key={product.id}>
                 <Image src={product.img} alt="image" width={100} height={100} />
                 <p className="text-xl">{product.name}</p>
                 <p className="text-xl">${product.price}</p>
                 <div className="flex justify-center mt-2">
-            <button onClick={() => removeItem(product) } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
+            <button onClick={() => removeProduct(product.id) } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
               <MdOutlineRemoveShoppingCart />
               <p className="ml-2">Remove from cart</p>
             </button>
