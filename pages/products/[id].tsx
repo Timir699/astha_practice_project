@@ -2,9 +2,11 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BsFillCartPlusFill } from 'react-icons/bs';
-import { Product, Products } from '../../model/product';
+import { CartProduct, Product, Products } from '../../model/product';
+import { useStore } from '../../store/cartStore';
+
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('http://localhost:3000/api/products');
@@ -37,7 +39,14 @@ const ProductDetails = ({ products }: Products) => {
   const detailsId = router.query.id;
   const detailsData = products.find(product => {
     return product.id === detailsId
-  }  );
+  } );
+
+  const addCartProduct = useStore(state=>state.addCartProduct);
+  const cartProduct  = useStore(state=>state.cartProduct);
+
+  console.log("effect" ,cartProduct);
+
+  
   
   return (
     <div>
@@ -55,7 +64,7 @@ const ProductDetails = ({ products }: Products) => {
         </p>
         <p className="text-2xl">Product Available : {detailsData?.quantity}</p>
         <div className="flex justify-center mt-2">
-          <button className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
+          <button onClick={() => {addCartProduct(detailsData!)} } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
             <BsFillCartPlusFill />
             <p className="ml-2">Add to cart</p>
           </button>

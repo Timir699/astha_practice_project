@@ -2,8 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { BsCart } from 'react-icons/bs';
+import { useStore } from '../../store/cartStore';
 
 const Navbar = () => {
+  const cartProduct  = useStore(state=>state.cartProduct);
+  const cartCounter = cartProduct.length
   return (
     <div className="navbar-main">
       <div className="container">
@@ -35,7 +38,7 @@ const Navbar = () => {
                 <a>
                   <BsCart style={{ fontSize: '2rem', cursor: 'pointer' }} />
                 </a>
-                <div className="cart-counter text-white">0</div>
+                <div className="cart-counter text-white">{cartCounter > 0 ? cartCounter : 0}</div>
               </div>
             </Link>
           </div>

@@ -6,8 +6,6 @@ import SingleProduct from './SingleProduct';
 
 const ProductList = ({products}: Products)  => {
     
-    console.log(products);
-    
     return (
         <div >
             <h2 className="text-zinc-400 text-5xl my-12">Product List</h2>
