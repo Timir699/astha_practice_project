@@ -13,4 +13,8 @@ export let useStore = create<CartProduct>(devtools((set) => ({
       cartProduct: state.cartProduct.filter((product) => product.id !== id),
     }));
   },
+  processComplete: () => {
+    set((state) => ({ 
+      cartProduct:  [] }))
+  },
 })))

@@ -16,5 +16,5 @@ export interface CartProduct {
  cartProduct: Product[];
  addCartProduct : (detailsData : Product) => void;
  removeProduct : (id: string) => void;
- 
+ processComplete ?: () => void
 }
