@@ -40,7 +40,7 @@ const Cart = () => {
                 <div className="flex justify-center mt-2">
             <button onClick={() => removeProduct(product.id) } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
               <MdOutlineRemoveShoppingCart />
-              <p  className="ml-2">Remove from cart</p>
+              <p className="ml-2">Remove from cart</p>
             </button>
           </div>
               </div>

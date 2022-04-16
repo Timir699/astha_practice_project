@@ -5,6 +5,8 @@ import { Form } from '../model/form';
 import { useStore } from '../store/cartStore';
 
 const Checkout = () => {
+    
+    const addOrderProduct = useStore((state) => state.addOrderProduct);
     const processComplete = useStore((state) => state.processComplete);
     const {
         register,
@@ -12,9 +14,14 @@ const Checkout = () => {
         reset,
         formState: { errors },
     } = useForm();
+
     const onSubmit = (data: Form) => {
-        console.log(data);
-        console.log(errors);
+        if (data) {
+           alert('order placed successfully');
+        } else {
+            alert('please enter valid information');
+        }
+        addOrderProduct()
         reset()
         processComplete()
     }
@@ -50,7 +57,7 @@ const Checkout = () => {
                     placeholder="Mobile number"
                     {...register('Mobile number', {
                         required: true,
-                        minLength: 6,
+                        minLength: 11,
                         maxLength: 14,
                     })}
                 />

@@ -32,8 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-// Array.isArray(router.query.id)?router.query.id[0]:router.query.id
-// parseInt(detailsId||''
+
 const ProductDetails = ({ products }: Products) => {
   const router = useRouter();
   const detailsId = router.query.id;
@@ -41,8 +40,18 @@ const ProductDetails = ({ products }: Products) => {
     return product.id === detailsId
   } );
 
+  
   const addCartProduct = useStore(state=>state.addCartProduct);
+  const cartProduct = useStore(state=>state.cartProduct);
+  const removeQuantity = useStore(state=>state.removeQuantity);
   const [isAdd, setIsAdd] = useState(false)
+
+  const productItem = cartProduct.find( item => item.id === detailsData!.id )
+
+  const handleAddCart = (detailsData: Product) => {
+    addCartProduct(detailsData)
+    removeQuantity(detailsData!.id)
+  }
 
   const addToCart = () => {
     setIsAdd(true)
@@ -50,8 +59,6 @@ const ProductDetails = ({ products }: Products) => {
   const gotoCheckout = () => {
     router.push('/cart')
   }
-
- 
   
   return (
     <div>
@@ -65,13 +72,12 @@ const ProductDetails = ({ products }: Products) => {
         <p className="text-3xl">Details of {detailsData?.name}</p>
         <p className="text-3xl">Price : ${detailsData?.price}</p>
         <p className="text-xl mx-72">
-          Description : {detailsData?.description}
+          Description : {productItem?.description}
         </p>
-        <p  >Product Available : {detailsData?.quantity}</p>
+        <p>Product Available : {detailsData?.quantity}</p>
         <div className="flex justify-center mt-2">
           <button onClick={() => { addToCart()
-              isAdd ? gotoCheckout() : addCartProduct(detailsData!)
-            
+              isAdd ? gotoCheckout() : handleAddCart(detailsData!)
             } } className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none flex items-center">
             <BsFillCartPlusFill />
             <p className="ml-2">{ isAdd ? 'Go to cart' : 'Add to cart'}</p>
