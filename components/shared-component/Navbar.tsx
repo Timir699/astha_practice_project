@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { BsCart } from 'react-icons/bs';
 import { useStore } from '../../store/cartStore';
+import { RiTodoLine } from 'react-icons/ri';
 
 const Navbar = () => {
   const cartProduct  = useStore(state=>state.cartProduct);
@@ -28,7 +29,7 @@ const Navbar = () => {
             />
           </Link>
           <Link href="/myOrders">
-            <a>MyOrders</a>
+            <a className="flex"> <RiTodoLine className="text-2xl mr-1" /> MyOrders</a>
           </Link>
           {/* <Link href="/" passHref>
                         

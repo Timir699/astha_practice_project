@@ -1,19 +1,35 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
 import { useStore } from '../store/cartStore';
+
 
 const MyOrders = () => {
     const orderProduct = useStore((state) => state.orderProduct);
     console.log(orderProduct);
+    const [orderId, setOrderId] = useState<Number>()
+    const [orderTime, setOrderTime] = useState()
+
+    useEffect(() => {
+        let orderNumber = Math.floor(Math.random()* 100)
+        setOrderId(orderNumber)
+    }, [orderProduct])
+    
+    var current = new Date();
+    console.log(current);
+    
+    
+    console.log(orderId);
+    
 
     return (
         <div>
             <div className="grid grid-rows-3 grid-flow-col gap-3">
                 <div className="row-span-2 col-span-2 ...">
+                
                     <p className="text-3xl my-4">My Orders</p>
                     <div className="grid grid-cols-4 gap-4">
-                        {orderProduct?.map((product) => {
+                        {/* {orderProduct?.map((product) => {
                             return (
                                 <div
                                     className="border text-center p-4"
@@ -30,7 +46,7 @@ const MyOrders = () => {
                                     <div className="flex justify-center mt-2"></div>
                                 </div>
                             );
-                        })}
+                        })} */}
                     </div>
                 </div>
             </div>

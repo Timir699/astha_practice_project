@@ -72,9 +72,9 @@ const ProductDetails = ({ products }: Products) => {
         <p className="text-3xl">Details of {detailsData?.name}</p>
         <p className="text-3xl">Price : ${detailsData?.price}</p>
         <p className="text-xl mx-72">
-          Description : {productItem?.description}
+          Description : {detailsData?.description}
         </p>
-        <p>Product Available : {detailsData?.quantity}</p>
+        <p>Product Available : { productItem ? productItem?.quantity : 10}</p>
         <div className="flex justify-center mt-2">
           <button onClick={() => { addToCart()
               isAdd ? gotoCheckout() : handleAddCart(detailsData!)
