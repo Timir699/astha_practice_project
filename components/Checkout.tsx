@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoCheckmarkDoneOutline } from 'react-icons/io5';
 import { Form } from '../model/form';
 import { useStore } from '../store/cartStore';
+import shortid from 'shortid'
 
 const Checkout = () => {
 
@@ -12,7 +13,14 @@ const Checkout = () => {
     const addOrderProduct = useStore((state) => state.addOrderProduct);
     const processComplete = useStore((state) => state.processComplete);
     const addcheckOutForm = useStore((state) => state.addcheckOutForm);
+    const addCreateOrder = useStore((state) => state.addCreateOrder);
+
+     const createOrder = {
+        id : shortid.generate(),
+        time: new Date()
+    }
     
+    console.log(createOrder);
     
     const {
         register,
@@ -27,9 +35,10 @@ const Checkout = () => {
         } else {
             alert('please enter valid information');
         }
-        addOrderProduct()
+        addCreateOrder!(createOrder)
+        addOrderProduct!()
         reset()
-        processComplete()
+        processComplete!()
         addcheckOutForm!(data)
         
         router.push('/orderDetails')

@@ -1,52 +1,22 @@
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
+import { useRouter } from 'next/router';
+import React from 'react';
 import { useStore } from '../store/cartStore';
 
-
 const MyOrders = () => {
-    const orderProduct = useStore((state) => state.orderProduct);
-    console.log(orderProduct);
-    const [orderId, setOrderId] = useState<Number>()
-    const [orderTime, setOrderTime] = useState()
-
-    useEffect(() => {
-        let orderNumber = Math.floor(Math.random()* 100)
-        setOrderId(orderNumber)
-    }, [orderProduct])
+    const createOrder = useStore((state) => state.createOrder);
+    const router = useRouter()
+    const gotoOrderDetails = () => {
+        router.push('/orderDetails')
+    }
     
-    var current = new Date();
-    console.log(current);
-    
-    
-    console.log(orderId);
-    
-
     return (
         <div>
             <div className="grid grid-rows-3 grid-flow-col gap-3">
                 <div className="row-span-2 col-span-2 ...">
-                
                     <p className="text-3xl my-4">My Orders</p>
-                    <div className="grid grid-cols-4 gap-4">
-                        {/* {orderProduct?.map((product) => {
-                            return (
-                                <div
-                                    className="border text-center p-4"
-                                    key={product.id}
-                                >
-                                    <Image
-                                        src={product.img}
-                                        alt="image"
-                                        width={100}
-                                        height={100}
-                                    />
-                                    <p className="text-xl">{product.name}</p>
-                                    <p className="text-xl">${product.price}</p>
-                                    <div className="flex justify-center mt-2"></div>
-                                </div>
-                            );
-                        })} */}
+                    <div onClick={() => gotoOrderDetails() } className="grid grid-cols-4 gap-4 border p-2 cursor-pointer ">
+                    <p className="text-xl">Order ID - {createOrder?.orderCreate?.id}</p>
+                    <p className="text-xl">Order Time - {createOrder?.orderCreate?.time?.toLocaleTimeString()}</p>
                     </div>
                 </div>
             </div>

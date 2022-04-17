@@ -1,3 +1,4 @@
+import { CreateOrder } from "./createOrder";
 import { Form } from "./form";
 
 export interface Product {
@@ -21,6 +22,8 @@ export interface CartProduct {
  addOrderProduct ?: () => void;
  checkOutForm: {};
  addcheckOutForm ?: (data: Form) => void;
+ createOrder: {}
+ addCreateOrder ?: (orderCreate : CreateOrder ) => void;
  removeProduct : (id: string) => void;
  processComplete ?: () => void
  removeQuantity ?: (id: string) => void

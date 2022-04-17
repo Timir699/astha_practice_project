@@ -1,5 +1,6 @@
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
+import { CreateOrder } from '../model/createOrder';
 import { Form } from '../model/form';
 import { CartProduct, Product } from '../model/product';
 
@@ -18,6 +19,11 @@ export let useStore = create<CartProduct>(devtools((set) => ({
   addcheckOutForm: (data: Form) => {
     set((state) => ({ 
       checkOutForm:  { ...state.checkOutForm, data} }))
+  },
+  createOrder: {},
+  addCreateOrder: (orderCreate : CreateOrder) => {
+    set((state) => ({ 
+      createOrder:  { ...state.createOrder, orderCreate} }))
   },
   removeProduct: (id) => {
     set((state) => ({
