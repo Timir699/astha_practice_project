@@ -1,3 +1,5 @@
+import { Form } from "./form";
+
 export interface Product {
   name : string;
   img : string;
@@ -17,6 +19,8 @@ export interface CartProduct {
  addCartProduct : (detailsData : Product) => void;
  orderProduct?: Product[];
  addOrderProduct ?: () => void;
+ checkOutForm: {};
+ addcheckOutForm ?: (data: Form) => void;
  removeProduct : (id: string) => void;
  processComplete ?: () => void
  removeQuantity ?: (id: string) => void

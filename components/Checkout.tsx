@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { IoCheckmarkDoneOutline } from 'react-icons/io5';
@@ -5,9 +6,14 @@ import { Form } from '../model/form';
 import { useStore } from '../store/cartStore';
 
 const Checkout = () => {
+
+    const router = useRouter()
     
     const addOrderProduct = useStore((state) => state.addOrderProduct);
     const processComplete = useStore((state) => state.processComplete);
+    const addcheckOutForm = useStore((state) => state.addcheckOutForm);
+    
+    
     const {
         register,
         handleSubmit,
@@ -24,6 +30,9 @@ const Checkout = () => {
         addOrderProduct()
         reset()
         processComplete()
+        addcheckOutForm!(data)
+        
+        router.push('/orderDetails')
     }
     
 
@@ -55,7 +64,7 @@ const Checkout = () => {
                     className="w-96 border p-2 my-4"
                     type="number"
                     placeholder="Mobile number"
-                    {...register('Mobile number', {
+                    {...register('Mobile_number', {
                         required: true,
                         minLength: 11,
                         maxLength: 14,

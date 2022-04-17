@@ -6,11 +6,15 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'
 
 const Cart = () => {
-  const cartProduct = useStore((state) => state.cartProduct);
-  const removeProduct = useStore((state) => state.removeProduct);
-  const quantity = cartProduct.length
+  const cartProductList = useStore((state) => state.cartProduct);
+  
+  const ids = cartProductList.map(o => o.id)
+  let cartProduct = cartProductList.filter(({id}, index) => !ids.includes(id, index + 1))
 
-  const total = cartProduct.map((cartProductPrice) => {
+  const removeProduct = useStore((state) => state.removeProduct);
+  const quantity = cartProductList.length
+  
+  const total = cartProductList.map((cartProductPrice) => {
     const { price } = cartProductPrice;
     return price;
   });
